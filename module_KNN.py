@@ -26,6 +26,6 @@ class MinetestKNN:
         return couleur_minetest
 
 minetest_knn = MinetestKNN('/home/clementdelage/Bureau/projet_minecraft/donnees_couleurs.csv')  # Assurez-vous de mettre le bon nom de fichier
-couleur_rgb_a_classifier = [100,100,100]
+couleur_rgb_a_classifier = [255,0,0]
 couleur_minetest_resultat = minetest_knn.classifier_couleur(couleur_rgb_a_classifier)
 print(f"Couleur Minetest pour RGB {couleur_rgb_a_classifier} : {couleur_minetest_resultat}")
