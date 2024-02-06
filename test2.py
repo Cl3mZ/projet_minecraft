@@ -24,17 +24,16 @@ class Reseau:
         print(requete)
         self.ma_socket.send(requete.encode())
 
-    def world_set_blocks(self, x1, y1, z1, x2, y2, z2, block_data):
-        requete = f"world.setBlocks({x1},{y1},{z1},{x2},{y2},{z2}, 35,{block_data})\n"
-        print(requete)
-        self.ma_socket.send(requete.encode())
+    #def world_set_blocks(self, x1 :int, y1: int, z1: int, x2 :int, y2: int, z2: int,block_data: int):
+     #   requete = f"world.setBlocks({x1},{y1},{z1},{x2},{y2},{z2},35,{block_data})"
+      #  print(requete)
+       # self.ma_socket.send(requete.encode())
     
 
 if __name__ == '__main__':
     test = Reseau()
     test.connect_to()
     test.chat_post("L")
-    test.world_set_block(0, 10, 0, 0)
-    test.world_set_blocks(10, 10, 10, -10, -10, -10, 11)
+    test.world_set_block(0, 10, 0, 11)
     test.disconnect()
-    
+    #test.world_set_blocks(10, 10 ,10 ,100 ,100 ,100 , 11)
