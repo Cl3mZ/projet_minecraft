@@ -17,31 +17,29 @@ class Img():
         self.une_image = None
         self.nom_image = nom_image
         self.lst_pixels = []
-
-    def open_image(self, nom_image):
-        une_image = Image.open(f"{nom_image}")
+        self.une_image = Image.open(f"{nom_image}")
     
     def get_width(self):
-        return self.une_image.img.width
+        return self.une_image.width
 
     def get_height(self):
-        return une_image.img.height
+        return self.une_image.height
 
     def get_pixel_color(self, i, j):
-        pixel_couleur = self.image.getpixel((i, j))
+        pixel_couleur = self.une_image.getpixel((i, j))
         return pixel_couleur
 
     def get_pixel_greyscale(self, pixel_couleur):
         return (pixel_couleur[0] * 0.3) + (pixel_couleur[1] * 0.59) + (pixel_couleur[2] * 0.11)
 
     def get_all(self):
-        
+        """Obtenir la """
         for i in range(self.get_width()):
             for j in range(self.get_height()):
-                pyxel_color = self.get_pixel_color(i,j)
-            self.grayscale = self.get_pyxel_grayscale(pyxel_color)
-        self.final_pyxels.append(((pyxel_color),grayscale,(i,j)))
-        return self.final_pyxels
+                couleur_pyxel = self.get_pixel_color(i,j)
+                niveau_gris = self.get_pixel_greyscale(couleur_pyxel)
+                self.lst_pixels.append((couleur_pyxel, niveau_gris, (i,j)))
+        return self.lst_pixels
 
 
 if __name__== '__main__':
