@@ -1,6 +1,7 @@
 import pandas as pd
 from sklearn.neighbors import KNeighborsClassifier
 class MinstestKNN():
+    """Classe contenant un algorithme KNN convertissant un tuple RGB en couleur minetest"""
     def __init__(self, nom_fichier, k):
         self.k = k
         fichier = pd.read_csv(nom_fichier, delimiter=';').dropna()
@@ -10,6 +11,7 @@ class MinstestKNN():
         self.choix = fichier.loc[:,"choice"]
 
     def train(self):
+        """Entraine l'algorithme KNN permettant d'économiser un grand nombre de cycles"""
         d = list(zip(self.red, self.green, self.blue))
         self.model = KNeighborsClassifier(n_neighbors=self.k)
         self.model.fit(d, self.choix)
@@ -21,7 +23,7 @@ class MinstestKNN():
 if __name__ == '__main__':
     x = MinstestKNN("donnees_couleurs.csv", 5)
     x.train()
-    print(x.find_closest_bricks_color(255, 0, 0))
+    print(x.find_closest_bricks_color(255, 255, 255))
     print(x.find_closest_bricks_color(0, 0, 255))
 
     

@@ -21,7 +21,7 @@ class Afficher_image():
                 closest_color = self.Mk.find_closest_bricks_color(pixel_color[0], pixel_color[1], pixel_color[2])[0]
                 # Placer un bloc dans Minetest à la position spécifiée
                 # En tenant compte que y est la hauteur et z est la profondeur
-                avance = self.Mi.get_pixel_greyscale(pixel_color) // 100
+                avance = self.Mi.get_pixel_greyscale(pixel_color)
                 self.Mc.world_set_block(closest_color, position_x + i, position_y-j , position_z + avance )
         self.Mc.disconnect()
 
@@ -42,4 +42,4 @@ class Afficher_image():
 if __name__ == '__main__':
     test = Afficher_image()
     test.draw3D(0, 20, 0)
-    
+    print(12)
