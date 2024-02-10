@@ -1,15 +1,5 @@
 # Librairie
 from PIL import Image
-# Ouvre un fichier image
-une_image = Image.open("diamant.png")
-# Charge l'image en mémoire
-une_image.load()
-# Convertit l'image au format RGB
-une_image = une_image.convert("RGB")
-# Récupère et affiche la couleur du pixel en haut à gauche
-print(une_image.getpixel((40, 50))) # (255, 255, 255)
-print(f"dimensions : {une_image.width}x{une_image.height}")
-
 
 
 class Img():
@@ -30,6 +20,7 @@ class Img():
     def get_pixel_color(self, i, j):
         """Obtient la couleur du pixel choisi"""
         pixel_couleur = self.une_image.getpixel((i, j))
+        print(pixel_couleur)
         return pixel_couleur
 
     def get_pixel_greyscale(self, pixel_couleur):
@@ -42,10 +33,10 @@ class Img():
             for j in range(self.get_height()):
                 couleur_pyxel = self.get_pixel_color(i,j)
                 niveau_gris = self.get_pixel_greyscale(couleur_pyxel)
-                self.lst_pixels.append((couleur_pyxel, niveau_gris, (i,j)))
+                self.lst_pixels.append(((couleur_pyxel), niveau_gris, (i,j)))
         return self.lst_pixels
 
 
 if __name__== '__main__':
-    image = Img("diamant.png")
-    image.open_image("diamant.png")
+    image = Img("pessi.jpg")
+    image.get_all()
