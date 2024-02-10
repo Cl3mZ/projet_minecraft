@@ -8,7 +8,7 @@ class Afficher_image():
         self.Mk.train()
         self.Mc = Reseau()
         self.Mc.connect_to("127.0.0.1", 4711)
-        self.Mi = Img("diamant.png")
+        self.Mi = Img("stfloV2.jpg")
 
     def draw3D(self, position_x, position_y, position_z):
         """Dessine l'image donnée dans minetest"""
@@ -22,7 +22,7 @@ class Afficher_image():
                 # Placer un bloc dans Minetest à la position spécifiée
                 # En tenant compte que y est la hauteur et z est la profondeur
                 avance = self.Mi.get_pixel_greyscale(pixel_color)
-                self.Mc.world_set_block(position_x + i, position_y-j , position_z + avance, closest_color[0])
+                self.Mc.world_set_block(position_x + i, position_y-j , position_z + avance//30, closest_color)
         self.Mc.disconnect()
 
     def draw2D(self, position_x, position_y, position_z):
@@ -32,15 +32,15 @@ class Afficher_image():
             for j in range(self.Mi.get_height()):
                 # Obtenir la couleur du pixel
                 pixel_color = self.Mi.get_pixel_color(i, j)
-                print(pixel_color)
                 # Utiliser le KNN pour trouver la couleur la plus proche dans les données
                 closest_color = self.Mk.find_closest_bricks_color(pixel_color[0], pixel_color[1], pixel_color[2])[0]
                 # Placer un bloc dans Minetest à la position spécifiée
                 # En tenant compte que y est la hauteur et z est la profondeur
-                self.Mc.world_set_block(closest_color, position_x + i, position_y - j , position_z)
+                self.Mc.world_set_block(position_x + i, position_y - j , position_z, closest_color)
         self.Mc.disconnect()
 
 if __name__ == '__main__':
     test = Afficher_image()
-    test.draw3D(0, 20, 0)
-    print(12)
+    #test.draw2D(350, 150, 0)
+    test.draw2D(550, 150, 10)
+    print(10)
