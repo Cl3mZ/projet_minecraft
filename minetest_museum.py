@@ -43,3 +43,4 @@ class Afficher_image():
 if __name__ == '__main__':
     test = Afficher_image()
     test.draw3D(0, 20, 0)
+    print(12)
