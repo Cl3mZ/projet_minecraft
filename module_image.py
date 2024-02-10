@@ -20,7 +20,6 @@ class Img():
     def get_pixel_color(self, i, j):
         """Obtient la couleur du pixel choisi"""
         pixel_couleur = self.une_image.getpixel((i, j))
-        print(pixel_couleur)
         return pixel_couleur
 
     def get_pixel_greyscale(self, pixel_couleur):
